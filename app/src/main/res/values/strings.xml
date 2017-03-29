@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Foods_launch_others</string>
+    <string name="app_name">Efras\'s Food</string>
     <string name="buy_message">Toca un item para agregarlo a la compra</string>
     <string name="factura_message">Toca un item para borrarlo de la factura ಠ◡ಠ</string>
     <string name="waiter_message">Expect us, the waiter will take your order soon</string>
@@ -9,7 +9,7 @@
 
     <string name="usuario">Usuario</string>
     <string name="contraseña">Contraseña</string>
-    <string name="hint_login">Accede y prueba nuestras nuevas delicias...</string>
+    <string name="hint_login">Accede y prueba nuestras nuevas delicias&#8230;</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
