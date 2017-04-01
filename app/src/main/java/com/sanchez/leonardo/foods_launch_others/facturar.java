@@ -23,7 +23,9 @@ public class facturar extends AppCompatActivity {
     private ArrayList<ArrayList<String>> factura;
     private ArrayList<String> row;
     private ArrayList<String> array;
+    Double Total;
     int valor_a_pagar=0;
+    Double iva;
     private Context context=this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +54,22 @@ public class facturar extends AppCompatActivity {
         }
 
         //set value to paid
+        //subtotal
+
+        //iva
+        final TextView ivatxt=(TextView) findViewById(R.id.textView16);
+        //subtotal
+        final TextView subtotal=(TextView) findViewById(R.id.textView6);
+        //total
         final TextView paid=(TextView) findViewById(R.id.textView7);
-        paid.setText("$"+valor_a_pagar);
+
+        //setting
+        iva=iva_calc(valor_a_pagar);
+        Total=valor_a_pagar+iva;
+        ivatxt.setText("$"+iva);
+        subtotal.setText("$"+valor_a_pagar);
+        paid.setText("$"+Total);
+
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,array);
         ListView myListView = (ListView) findViewById(R.id.lista_pagar);
         myListView.setAdapter(adapter);
@@ -82,11 +98,19 @@ public class facturar extends AppCompatActivity {
                         System.out.println("dejado"+row);
                         row = factura.get(it);
                         valor_a_pagar+=Integer.parseInt((row.get(1)));
-                        paid.setText("$"+valor_a_pagar);
+
+                        //setting
+                        iva=iva_calc(valor_a_pagar);
+                        Total=valor_a_pagar+iva;
+                        ivatxt.setText("$"+iva);
+                        subtotal.setText("$"+valor_a_pagar);
+                        paid.setText("$"+Total);
                     }
                 }
                 else
                     {
+                        subtotal.setText("¯\\_(⊙︿⊙)_/¯");
+                        ivatxt.setText("¯\\_(⊙︿⊙)_/¯");
                         paid.setText("¯\\_(⊙︿⊙)_/¯");
                     }
             }
@@ -128,5 +152,10 @@ public class facturar extends AppCompatActivity {
         i.putExtra("factura", this.factura);
         System.out.println(this.factura);
         startActivity(i);
+    }
+
+    public Double iva_calc(int total)
+    {
+        return  total*0.19;
     }
 }
