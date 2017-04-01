@@ -63,6 +63,7 @@ public class facturar extends AppCompatActivity {
         //total
         final TextView paid=(TextView) findViewById(R.id.textView7);
 
+
         //setting
         iva=iva_calc(valor_a_pagar);
         Total=valor_a_pagar+iva;
